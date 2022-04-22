@@ -11,10 +11,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 class CustomersPurchaseSortFind {
 
@@ -39,14 +37,18 @@ class CustomersPurchaseSortFind {
 
     private void printSortedBySurname(){
         System.out.println("Nazwiska");
-        data.stream().sorted(surnameThenIdComparator).forEach(System.out::println);
+
+        data.stream()
+                .sorted(Comparator.comparing(Purchase::getCustomerSurname).thenComparing(Purchase::getCustomerId))
+                .forEach(System.out::println);
+
         System.out.println();
     }
 
     private void printSortedByTotalAmount(){
         System.out.println("Koszty");
         data.stream()
-                .sorted(totalAmountComparator.reversed())
+                .sorted(Comparator.comparing(Purchase::getTotalAmount).reversed())
                 .map(n -> n + " (Koszt: " + n.totalAmount + ")")
                 .forEach(System.out::println);
         System.out.println();
@@ -71,15 +73,4 @@ class CustomersPurchaseSortFind {
         return data.stream().anyMatch(n -> n.customerId.equals(customerId));
     }
 
-    private final Comparator <Purchase> surnameThenIdComparator
-            = Comparator.comparing(Purchase::getCustomerSurname).thenComparing(Purchase::getCustomerId);
-
-    private final Comparator <Purchase> totalAmountComparator = Comparator.comparing(Purchase::getTotalAmount);
-
-    @Override
-    public String toString() {
-        return "CustomersPurchaseSortFind{" +
-                "data=" + data +
-                '}';
-    }
 }

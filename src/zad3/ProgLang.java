@@ -46,7 +46,7 @@ public class ProgLang {
         Map<String, Set<String>> temp = getLangsMap();
         //Map<String, Set<String>> result = temp.entrySet().stream().sorted().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue);
 
-        return null;
+        return temp;
     }
 
     public Map<Object, Object> getProgsMapSortedByNumOfLangs() {
@@ -58,7 +58,9 @@ public class ProgLang {
     }
 
     private <T,U> Map <T,U> sorted (Map <T,U> argument, Comparator <Map.Entry<T,U>> entryComparator){
-        return argument.entrySet().stream().sorted(entryComparator).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (oldValue, newValue)-> oldValue, LinkedHashMap::new));
+        return argument.entrySet().stream()
+                .sorted(entryComparator)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (oldValue, newValue)-> oldValue, LinkedHashMap::new));
     }
 
     private <T,U> Map <T,U> filtered (Map <T,U> argument, Predicate <Map.Entry<T,U>> predicate){

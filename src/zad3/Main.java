@@ -11,7 +11,7 @@ import java.io.*;
 
 public class Main {
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws IOException {
     ProgLang pl = null;
     try {
       pl =  new ProgLang(System.getProperty("user.home") + "/Programmers.tsv");
@@ -23,7 +23,7 @@ public class Main {
       pl.getLangsMap().forEach((k,v)->System.out.println(k+ " = " + v));
     } catch (Exception exc) {
       System.out.println(exc);
-    }                                                 //done
+    }
     System.out.println("@2 Mapa programistów:");
     try {
       pl.getProgsMap().forEach((k,v)->System.out.println(k+ " = " + v));
@@ -33,14 +33,14 @@ public class Main {
     System.out.println("@3 Języki posortowane wg liczby programistów:");
     try {
       pl.getLangsMapSortedByNumOfProgs()
-        .forEach((k,v)->System.out.println(k+ " = " + v));
+              .forEach((k,v)->System.out.println(k+ " = " + v));
     } catch (Exception exc) {
       System.out.println(exc);
     }
     System.out.println("@4 Programiści posortowani wg liczby języków:");
     try {
       pl.getProgsMapSortedByNumOfLangs()
-        .forEach((k,v)->System.out.println(k+ " = " + v));
+              .forEach((k,v)->System.out.println(k+ " = " + v));
     } catch (Exception exc) {
       System.out.println(exc);
     }
@@ -59,7 +59,7 @@ public class Main {
     System.out.println("@7 Mapa programistów znających więcej niż 1 język:");
     try {
       pl.getProgsMapForNumOfLangsGreaterThan(1)
-        .forEach((k,v)->System.out.println(k+ " = " + v));
+              .forEach((k,v)->System.out.println(k+ " = " + v));
     } catch (Exception exc) {
       System.out.println(exc);
     }

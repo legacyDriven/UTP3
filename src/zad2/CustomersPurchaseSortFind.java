@@ -74,5 +74,4 @@ class CustomersPurchaseSortFind {
     private boolean checkIfCustomerIdExists(String customerId){
         return data.stream().anyMatch(n -> n.customerId.equals(customerId));
     }
-
 }

@@ -50,8 +50,8 @@ public class Anagrams {
     }
 
     String getAnagramsFor(String word){
-        List <String> toProcess = rawDataFromFile.stream().filter(n -> n.length() == word.length()).toList();
-        return word + ": " + toProcess.stream()
+        return word + ": " + rawDataFromFile.stream()
+                .filter(n -> n.length() == word.length())
                 .filter(n-> !n.equals(word))
                 .filter(n -> Anagrams.convertToSortedParameter(word).equals(Anagrams.convertToSortedParameter(n)))
                 .toList();

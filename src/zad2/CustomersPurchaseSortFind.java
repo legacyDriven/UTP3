@@ -6,7 +6,6 @@
 
 package zad2;
 
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -47,10 +46,12 @@ class CustomersPurchaseSortFind {
 
     private void printSortedByTotalAmount(){
         System.out.println("Koszty");
+
         data.stream()
                 .sorted(Comparator.comparing(Purchase::getTotalAmount).reversed())
                 .map(n -> n + " (Koszt: " + n.totalAmount + ")")
                 .forEach(System.out::println);
+
         System.out.println();
     }
 
@@ -62,6 +63,7 @@ class CustomersPurchaseSortFind {
 
         if (checkIfCustomerIdExists(customerId)) {
             System.out.println("Klient " + customerId);
+
             data.stream()
                     .filter(n -> n.customerId.equals(customerId))
                     .forEach(System.out::println);

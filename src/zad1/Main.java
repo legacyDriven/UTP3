@@ -15,23 +15,10 @@ public class Main {
     String home = System.getProperty("user.home");
     String allWords = home + "/allwords.txt";
     Anagrams an = new Anagrams(allWords);
-//    andes danes deans evil gals lags levi live sedan
-//    slag streets testers uprising veil vile
-//
-//    a plik wordsToFind słowa:
-//    evil streets uprising
-//
-//            - to program (zaczynający wykonanie od obowiązkowej klasy Main) powinien wyprowadzić następującą informację
-//
-//[evil, levi, live, veil, vile]
-//[andes, danes, deans, sedan]
-//[gals, lags, slag]
-//[streets, testers]
-//[uprising]
 
-//    for(List<String> wlist : an.getSortedByAnQty()) {
-//      System.out.println(wlist);
-//    }
+    for(List<String> wlist : an.getSortedByAnQty()) {
+      System.out.println(wlist);
+    }
 
     System.out.println("************************");
     Scanner scan = new Scanner(new File(home, "wordsToFind.txt"));

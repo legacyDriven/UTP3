@@ -11,7 +11,7 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-  public static void main(String[] args) throws FileNotFoundException {
+  public static void main(String[] args) throws IOException {
     String home = System.getProperty("user.home");
     String allWords = home + "/allwords.txt";
     Anagrams an = new Anagrams(allWords);

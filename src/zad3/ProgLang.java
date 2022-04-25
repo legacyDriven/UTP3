@@ -31,7 +31,7 @@ public class ProgLang {
         Map<String, Set<String>> result = new LinkedHashMap<>();
         Map<String, Set<String>> mapToMapFrom = getLangsMap();
 
-        List<String> keys = mapToMapFrom.values().stream().flatMap(Collection::stream).distinct().toList();
+        List<String> keys = mapToMapFrom.values().stream().flatMap(Collection::stream).distinct().collect(Collectors.toList());
         for (String s : keys) result.put(s, new LinkedHashSet<>());
 
         for(String s : result.keySet()){

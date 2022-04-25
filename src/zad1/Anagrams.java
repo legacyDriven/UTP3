@@ -39,8 +39,7 @@ public class Anagrams {
     }
 
     private static String convertToSortedParameter(String input){
-        String [] entry = input.split("");
-        return Arrays.stream(entry).sorted(String::compareTo).collect(Collectors.joining());
+        return Arrays.stream(input.split("")).sorted(String::compareTo).collect(Collectors.joining());
     }
 
     String getAnagramsFor(String word){
